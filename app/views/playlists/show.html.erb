@@ -9,6 +9,25 @@
   <strong>User:</strong>
   <%= @playlist.user.name %>
 </p>
+<%=form_with(model: Song.new, url:playlist_songs_path(@playlist),local: true) do |f| %>
+
+<%=f.label :name%>
+<%=f.text_area :name%>
+<br>
+<%=f.label:artist%>
+<%=f.text_area :artist%>
+<br>
+<%=f.submit :enviar%>
+<%end%>
+<hr>
+<ul>
+  <% @playlist.songs.each do |song| %>
+
+  <li><%= "Song: #{song.name} , Artist: #{song.artist}"%></li>
+  <td><%= button_to 'Borrar Cancion',playlist_delete_song_path(@playlist,song), method: :delete %></td>
+<br>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_playlist_path(@playlist) %> |
 <%= link_to 'Back', playlists_path %>
