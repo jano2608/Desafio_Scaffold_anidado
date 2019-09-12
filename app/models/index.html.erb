@@ -1,0 +1,30 @@
+<h1>Index de Movies</h1>
+<h2 class="h11">Favorite Movies</h2>
+<div class="card card-body bg-dark container">
+<% @favorite_movies.each do |movie| %>
+<p class="p11"><%= "#{movie.name} / #{movie.year}"%><br><br>
+ <%= link_to 'Ver', movie%> |
+ <%= link_to 'Editar', edit_movie_path(movie)%> |
+ <%= link_to 'Eliminar', movie, method: :delete , data:{confirm:'bo dale!!!'}%>
+ <%= button_to 'like',favorite_movie_path(movie), class:'col-sm-1'%> <br>
+ <%= button_to 'dislike',favorite_movie_path(movie),method: :delete, class:'col-sm-1'%>
+ </p>
+
+<%end%>
+</div>
+<br>
+<br>
+<h2 class="h11">Regular Movies</h2>
+<div class="card card-body bg-dark container">
+<% @regular_movies.each do |movie| %>
+<p class="p11"><%= "#{movie.name} / #{movie.year}"%><br><br>
+ <%= link_to 'Ver', movie%> |
+ <%= link_to 'Editar', edit_movie_path(movie)%> |
+ <%= link_to 'Eliminar', movie, method: :delete , data:{confirm:'bo dale!!!'}%>
+ <%= button_to 'like',favorite_movie_path(movie)%><br>
+ <%= button_to 'dislike',favorite_movie_path(movie),method: :delete%>
+ </p>
+<%end%>
+</div>
+<br>
+<br>
